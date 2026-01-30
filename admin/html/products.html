@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+
+  <!-- Base & Page CSS -->
+  <link rel="stylesheet" href="../css/products.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+  <h2>Admin Panel</h2>
+  <a href="home.html">Dashboard</a>
+  <a href="products.html" class="active">Products</a>
+  <a href="orders.html">Orders</a>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Products</h1>
+  
+    <div class="header-actions">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search products..."
+        onkeyup="searchProducts()"
+        class="search-input"
+      >
+      <button class="add-btn" onclick="openModal()">+ Add Product</button>
+    </div>
+  </div>
+
+  <!-- Products Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Stock</th>
+        <th>Unit</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="productBody"></tbody>
+  </table>
+
+</div>
+
+<!-- ================= ADD / EDIT PRODUCT MODAL ================= -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2 id="modalTitle">Add Product</h2>
+      <span class="close" onclick="closeModal()">×</span>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+
+      <!-- Image Upload -->
+      <input type="file" id="pimg" accept="image/*">
+
+      <!-- Form Fields -->
+      <div class="form-grid">
+        <input id="pname" placeholder="Product Name">
+        <input id="pprice" placeholder="Price">
+
+        <input id="pdiscount" placeholder="Discount (%)">
+        <input id="pqty" placeholder="Stock">
+
+        <select id="punit">
+          <option value="">Select Unit</option>
+          <option>1 kg</option>
+          <option>500 g</option>
+          <option>1 L</option>
+        </select>
+      </div>
+
+      <textarea id="pdesc" placeholder="Product Description"></textarea>
+
+      <!-- Save Button -->
+      <button class="save-btn" onclick="saveProduct()">Save Product</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="../js/products.js"></script>
+</body>
+</html>
