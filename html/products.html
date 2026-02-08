@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/products.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Admin Panel</h2>
+  <div class="sidebar-menu">
+    <a href="/adminCopy/index.html">Dashboard</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="orders.html">Orders</a>
+    <a href="customers.html">Customers</a>
+  </div>
+  <a onclick="confirmLogout()" class="logout-btn">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <h1>Products</h1>
+    </div>
+  
+    <div class="topbar-right">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+      <button class="add-btn" onclick="openModal()">+ Add Product</button>
+    </div>
+  </div>
+  
+  
+
+  <!-- CATEGORY FILTER -->
+  <div class="category-filter">
+    <button class="active" onclick="filterCategory('All', this)">All</button>
+    <button onclick="filterCategory('Rice', this)">Rice</button>
+    <button onclick="filterCategory('Oil', this)">Oil</button>
+    <button onclick="filterCategory('Snacks', this)">Snacks</button>
+    <button onclick="filterCategory('Beverages', this)">Beverages</button>
+      <!-- ADD CATEGORY BUTTON -->
+      <button class="add-category-btn" onclick="toggleCategoryManager()">Manage Categories</button>
+  </div>
+<!-- CATEGORY MANAGER -->
+<div class="category-manager" id="categoryManager" style="display:none;">
+
+  <div class="manager-header">
+    <h2>Manage Categories</h2>
+    <button class="panel-close-btn" onclick="toggleCategoryManager()">✕</button>
+  </div>
+  
+
+ <button class="add-btn" onclick="openCategoryModal()">+ Add Category</button>
+
+
+  <div id="categoryList"></div>
+
+</div>
+
+
+
+  <!-- PRODUCT GRID -->
+  <div class="product-grid" id="productBody"></div>
+
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="modalTitle">Add Product</h2>
+      <button class="close-btn" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- IMAGE UPLOAD -->
+      <div class="image-upload">
+        <label class="image-box">
+          <input type="file" id="pimg" accept="image/*" onchange="previewMainImage(event)">
+          <img id="mainPreview">
+          <span class="placeholder">Click to upload image</span>
+        </label>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-grid">
+
+        <input id="pname" placeholder="Product Name">
+
+        <input id="pprice" type="number" placeholder="Price">
+
+        <input id="pdiscount" type="number" placeholder="Discount (%)">
+
+        <input id="pqty" type="number" placeholder="Stock">
+
+        <select id="punit">
+          <option value="">Select Unit</option>
+          <option>1 kg</option>
+          <option>500 g</option>
+          <option>1 L</option>
+          <option>250 g</option>
+        </select>
+<select id="pcategory">
+  <option value="">Select Category</option>
+  <option>Rice</option>
+  <option>Oil</option>
+  <option>Snacks</option>
+  <option>Beverages</option>
+</select>
+
+      </div>
+
+      <textarea id="pdesc" placeholder="Product Description"></textarea>
+
+      <button class="save-btn" onclick="saveProduct()">Save Product</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <!---pagination-->
+<div class="pagination">
+  <button class="nav-btn">❮ Previous</button>
+
+  <button class="page active">1</button>
+  <button class="page">2</button>
+  <button class="page">3</button>
+  <span class="dots">...</span>
+  <button class="page">20</button>
+
+  <button class="nav-btn">Next ❯</button>
+</div>
+<!-- CATEGORY MODAL -->
+<div class="modal" id="categoryModal">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="categoryModalTitle">Add Category</h2>
+      <button class="close-btn" onclick="closeCategoryModal()">✕</button>
+
+
+    </div>
+
+    <input type="text" id="newCategoryName" placeholder="Category name">
+
+    <button class="save-btn" onclick="saveCategory()">Save Category</button>
+
+  </div>
+</div>
+
+<script src="../js/products.js"></script>
+
+</body>
+</html>

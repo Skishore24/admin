@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/customers.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <h2>Admin Panel</h2>
+
+  <div class="sidebar-menu">
+    <a href="/adminCopy/index.html">Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="orders.html">Orders</a>
+    <a href="customers.html" class="active">Customers</a>
+  </div>
+
+  <a class="logout-btn" onclick="confirmLogout()">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h1>Customers</h1>
+
+    <input
+      type="text"
+      id="searchCustomer"
+      class="search-input"
+      placeholder="Search by name, phone or email..."
+      onkeyup="searchCustomers()"
+    >
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Total Orders</th>
+        <th>Total Spent</th>
+        <th>Last Order</th>
+      </tr>
+    </thead>
+
+    <tbody id="customersBody"></tbody>
+  </table>
+<!---pagination-->
+<div class="pagination">
+  <button class="nav-btn">❮ Previous</button>
+
+  <button class="page active">1</button>
+  <button class="page">2</button>
+  <button class="page">3</button>
+  <span class="dots">...</span>
+  <button class="page">20</button>
+
+  <button class="nav-btn">Next ❯</button>
+</div>
+</div>
+
+<script src="../js/customers.js"></script>
+</body>
+</html>

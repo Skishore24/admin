@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders</title>
+
+  <!-- IMPORTANT FOR MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/orders.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Admin Panel</h2>
+  <div class="sidebar-menu">
+    <a href="/adminCopy/index.html" >Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="orders.html" class="active">Orders</a>
+    <a href="customers.html">Customers</a>
+  </div>
+  <a onclick="confirmLogout()" class="logout-btn">Logout</a>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="main">
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h1>Orders</h1>
+
+    <div class="header-actions">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search order or customer..."
+        onkeyup="searchOrders()"
+      >
+
+      <select class="filter-select" onchange="filterOrders(this.value)">
+        <option value="all">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="canceled">Canceled</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Order No</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="ordersBody"></tbody>
+  </table>
+  <!---pagination-->
+  <div class="pagination">
+    <button class="nav-btn">❮ Previous</button>
+  
+    <button class="page active">1</button>
+    <button class="page">2</button>
+    <button class="page">3</button>
+    <span class="dots">...</span>
+    <button class="page">20</button>
+  
+    <button class="nav-btn">Next ❯</button>
+  </div>
+</div>
+
+<!-- STATUS MODAL -->
+<div class="modal" id="statusModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Change Order Status</h2>
+      <span class="close" onclick="closeStatusModal()">×</span>
+    </div>
+
+    <div class="modal-body">
+      <select id="statusSelect">
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="canceled">Canceled</option>
+      </select>
+
+      <button class="save-btn" onclick="saveOrderStatus()">Update Status</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="../js/orders.js"></script>
+</body>
+</html>

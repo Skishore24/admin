@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./css/home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+  <h2>Admin Panel</h2>
+  <div class="sidebar-menu">
+    <a href="/adminCopy/index.html" class="active">Dashboard</a>
+    <a href="/adminCopy/html/products.html">Products</a>
+    <a href="/adminCopy/html/orders.html">Orders</a>
+    <a href="/adminCopy/html/customers.html">Customers</a>
+  </div>
+  <a onclick="confirmLogout()" class="logout-btn">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h2>Dashboard</h2>
+  </div>
+
+  <!-- DASHBOARD CARDS -->
+  <div class="cards">
+    <div class="stat-card">
+      <p class="card-title">Total Orders</p>
+      <h3 class="card-value" id="totalOrders">0</h3>
+    </div>
+
+    <div class="stat-card">
+      <p class="card-title">Confirmed Orders</p>
+      <h3 class="card-value" id="confirmedOrders">0</h3>
+    </div>
+
+    <div class="stat-card">
+      <p class="card-title">Pending Orders</p>
+      <h3 class="card-value" id="pendingOrders">0</h3>
+    </div>
+
+    <div class="stat-card">
+      <p class="card-title">Conversion Rate</p>
+      <h3 class="card-value" id="conversionRate">0%</h3>
+    </div>
+
+    <div class="stat-card">
+      <p class="card-title">Confirmed Value</p>
+      <h3 class="card-value" id="confirmedValue">₹0</h3>
+    </div>
+
+    <div class="stat-card">
+      <p class="card-title">Pending Value</p>
+      <h3 class="card-value" id="pendingValue">₹0</h3>
+    </div>
+  </div>
+
+  <!-- TREND + PIE -->
+  <div class="charts">
+    <div class="box">
+      <h3>Revenue Trend</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+
+    <div class="box pie-dark">
+      <h3>Customer Distribution</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+    
+  </div>
+
+  <!-- MONTHLY + COST -->
+  <div class="charts">
+    <div class="box">
+      <h3>Monthly Sales</h3>
+      <canvas id="salesChart"></canvas>
+    </div>
+
+    <div class="box">
+      <div class="cost-header">
+        <h3>Cost by Category</h3>
+        <span class="muted">This month</span>
+      </div>
+
+      <div class="cost-list">
+        <div>
+          <div class="cost-info"><span>Fruits</span><span>30%</span></div>
+          <div class="cost-bar green"><span style="width:30%"></span></div>
+        </div>
+        <div>
+          <div class="cost-info"><span>Dairy</span><span>20%</span></div>
+          <div class="cost-bar blue"><span style="width:20%"></span></div>
+        </div>
+        <div>
+          <div class="cost-info"><span>Grains</span><span>15%</span></div>
+          <div class="cost-bar yellow"><span style="width:15%"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT ORDERS -->
+  <div class="box" style="margin-top:20px;">
+    <div class="orders-header">
+      <h3>Recent Orders</h3>
+<button class="btn-outline" onclick="goToOrders()">See all</button>
+
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-cell">
+            <img src="https://via.placeholder.com/40"> Apples
+          </td>
+          <td>Fruits</td>
+          <td>₹320</td>
+          <td><span class="status delivered">Delivered</span></td>
+        </tr>
+        <tr>
+          <td class="product-cell">
+            <img src="https://via.placeholder.com/40"> Milk
+          </td>
+          <td>Dairy</td>
+          <td>₹60</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<script src="./js/home.js"></script>
+</body>
+</html>
